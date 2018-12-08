@@ -70,7 +70,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::xox3.Properties.Resources.загруженное;
-            this.ClientSize = new System.Drawing.Size(517, 432);
+            this.ClientSize = new System.Drawing.Size(512, 433);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnOptions);
             this.Controls.Add(this.btnStart);
