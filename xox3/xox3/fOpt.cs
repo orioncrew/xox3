@@ -27,5 +27,10 @@ namespace xox3
             this.Hide();
             
         }
+
+        private void rbHumanX_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
