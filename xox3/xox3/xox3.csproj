@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EnumOX.cs" />
     <Compile Include="EnumPlayerComp.cs" />
     <Compile Include="fGame.cs">
       <SubType>Form</SubType>
@@ -52,6 +53,7 @@
     <Compile Include="fGame.Designer.cs">
       <DependentUpon>fGame.cs</DependentUpon>
     </Compile>
+    <Compile Include="Figure.cs" />
     <Compile Include="fOpt.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -10,9 +10,12 @@ namespace xox3
 {
     class Figure
     {
-        void DrawFigure(int x, int y)
-        {
+        public EnumOX value = EnumOX.space;
 
+        public void DrawFigure()
+        {
+            //отрисовка знака
+            
         }
 
     }

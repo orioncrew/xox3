@@ -81,13 +81,11 @@
             // 
             this.rbCompO.AutoSize = true;
             this.rbCompO.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.rbCompO.Checked = true;
             this.rbCompO.Font = new System.Drawing.Font("Comic Sans MS", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.rbCompO.Location = new System.Drawing.Point(15, 93);
             this.rbCompO.Name = "rbCompO";
             this.rbCompO.Size = new System.Drawing.Size(194, 43);
             this.rbCompO.TabIndex = 1;
-            this.rbCompO.TabStop = true;
             this.rbCompO.Text = "Компьютер";
             this.rbCompO.UseVisualStyleBackColor = false;
             // 
@@ -95,11 +93,13 @@
             // 
             this.rbHumanO.AutoSize = true;
             this.rbHumanO.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.rbHumanO.Checked = true;
             this.rbHumanO.Font = new System.Drawing.Font("Comic Sans MS", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.rbHumanO.Location = new System.Drawing.Point(15, 44);
             this.rbHumanO.Name = "rbHumanO";
             this.rbHumanO.Size = new System.Drawing.Size(148, 43);
             this.rbHumanO.TabIndex = 0;
+            this.rbHumanO.TabStop = true;
             this.rbHumanO.Text = "Человек";
             this.rbHumanO.UseVisualStyleBackColor = false;
             // 

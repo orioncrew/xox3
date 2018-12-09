@@ -34,7 +34,7 @@ namespace xox3
 
         private void panel1_MouseClick(object sender, MouseEventArgs e)
         {
-            Xox.ClickPole(object sender, MouseEventArgs e);
+            Xox.ClickPole(sender, e);
         }
     }
 }
