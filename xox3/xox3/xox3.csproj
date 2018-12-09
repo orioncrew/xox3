@@ -45,6 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="fGame.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fGame.Designer.cs">
+      <DependentUpon>fGame.cs</DependentUpon>
+    </Compile>
     <Compile Include="fOpt.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,6 +65,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="fGame.resx">
+      <DependentUpon>fGame.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="fOpt.resx">
       <DependentUpon>fOpt.cs</DependentUpon>
     </EmbeddedResource>
@@ -93,6 +102,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\blue_curves-Abstract_art_design_wallpaper_medium.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\download_img.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

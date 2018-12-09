@@ -10,22 +10,11 @@ using System.Windows.Forms;
 
 namespace xox3
 {
-    public partial class fOpt : Form
+    public partial class fGame : Form
     {
-        public fOpt()
+        public fGame()
         {
             InitializeComponent();
-        }
-
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btOptClose_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            
         }
     }
 }
