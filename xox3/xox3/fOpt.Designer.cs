@@ -62,6 +62,7 @@
             this.rbCompX.TabIndex = 1;
             this.rbCompX.Text = "Компьютер";
             this.rbCompX.UseVisualStyleBackColor = true;
+            this.rbCompX.CheckedChanged += new System.EventHandler(this.rbCompX_CheckedChanged);
             // 
             // rbHumanX
             // 
@@ -88,6 +89,7 @@
             this.rbCompO.TabIndex = 1;
             this.rbCompO.Text = "Компьютер";
             this.rbCompO.UseVisualStyleBackColor = false;
+            this.rbCompO.CheckedChanged += new System.EventHandler(this.rbCompO_CheckedChanged);
             // 
             // rbHumanO
             // 
@@ -102,6 +104,7 @@
             this.rbHumanO.TabStop = true;
             this.rbHumanO.Text = "Человек";
             this.rbHumanO.UseVisualStyleBackColor = false;
+            this.rbHumanO.CheckedChanged += new System.EventHandler(this.rbHumanO_CheckedChanged);
             // 
             // groupBox1
             // 
@@ -126,6 +129,7 @@
             this.rbStartO.TabIndex = 1;
             this.rbStartO.Text = "Игрок О";
             this.rbStartO.UseVisualStyleBackColor = false;
+            this.rbStartO.CheckedChanged += new System.EventHandler(this.rbStartO_CheckedChanged);
             // 
             // rbStartX
             // 
@@ -171,6 +175,7 @@
             this.tbO.Size = new System.Drawing.Size(164, 56);
             this.tbO.TabIndex = 0;
             this.tbO.Value = 5;
+            this.tbO.Scroll += new System.EventHandler(this.tbO_Scroll);
             // 
             // groupBox3
             // 
@@ -190,6 +195,7 @@
             this.tbX.Size = new System.Drawing.Size(165, 56);
             this.tbX.TabIndex = 0;
             this.tbX.Value = 5;
+            this.tbX.Scroll += new System.EventHandler(this.tbX_Scroll);
             // 
             // groupBox4
             // 
