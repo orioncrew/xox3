@@ -17,6 +17,20 @@ namespace xox3
             InitializeComponent();
         }
 
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
 
+        }
+
+        private void btOptClose_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            
+        }
+
+        private void rbHumanX_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -12,6 +12,9 @@ namespace xox3
 {
     public partial class fMain : Form
     {
+        fOpt fO = new fOpt();
+        fGame fG = new fGame();
+
         public fMain()
         {
             InitializeComponent();
@@ -20,6 +23,21 @@ namespace xox3
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnOptions_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            fO.ShowDialog();
+            this.Show();
+
+        }
+
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            fG.ShowDialog();
+            this.Show();
         }
     }
 }

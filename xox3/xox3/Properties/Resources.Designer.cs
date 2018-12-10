@@ -73,6 +73,16 @@ namespace xox3.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap download_img {
+            get {
+                object obj = ResourceManager.GetObject("download_img", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap загруженное {
             get {
                 object obj = ResourceManager.GetObject("загруженное", resourceCulture);
