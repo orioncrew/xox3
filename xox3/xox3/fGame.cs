@@ -15,6 +15,8 @@ namespace xox3
         public fGame()
         {
             InitializeComponent();
+
+            
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -30,6 +32,11 @@ namespace xox3
         private void btnRestart_Click(object sender, EventArgs e)
         {
             Xox.Restart(panel1);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

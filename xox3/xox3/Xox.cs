@@ -61,6 +61,22 @@ namespace xox3
             firstStep = !firstStep;
             Step = firstStep;
             
+
+        }
+
+        //Цикл игры
+        static public void CircleGame()
+        {
+            while (true)
+            {
+
+            }
+        }
+
+        // Ход компьютера
+        static public void StepComp()
+        {
+            
         }
     }
 }
