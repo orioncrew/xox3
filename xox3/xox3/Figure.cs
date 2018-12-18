@@ -21,21 +21,23 @@ namespace xox3
             y = _y;
         }
 
-        public void DrawFigure(Panel panel1)
+        public void DrawFigure(Panel panel1, int poleWidth, int poleHeight)
         {
+            int k = panel1.Width / poleWidth;
+            int l = panel1.Height / poleHeight;
             //отрисовка знака
             Graphics gPanel = panel1.CreateGraphics();
             
             if(value == EnumOX.X)
             {
-                Pen p = new Pen(Color.Red, 10);
-                gPanel.DrawLine(p, 150 * x + 2, 150 * y + 2, 150 * x + 148, 150 * y + 148);
-                gPanel.DrawLine(p, 150 * x + 148, 150 * y + 2, 150 * x + 2, 150 * y + 148);
+                Pen p = new Pen(Color.Red, 10); //поработать над шириной пера
+                gPanel.DrawLine(p, k * x + 5, l * y + 5, k * x + k-5, l * y + l-5);
+                gPanel.DrawLine(p, k * x + l-5, l * y + 5, k * x + 5, l * y + l-5);
             }
             else
             {
-                Pen p = new Pen(Color.Green, 10);
-                gPanel.DrawEllipse(p, 150 * x + 10, 150 * y + 10, 130, 130);
+                Pen p = new Pen(Color.Green, 10); //поработать над шириной пера
+                gPanel.DrawEllipse(p, k * x + 10, l * y + 10, k-20, l-20);
             }          
 
 

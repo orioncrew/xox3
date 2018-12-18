@@ -45,6 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CompPlayercs.cs" />
+    <Compile Include="CreatePole.cs" />
     <Compile Include="EnumOX.cs" />
     <Compile Include="EnumPlayerComp.cs" />
     <Compile Include="fGame.cs">
