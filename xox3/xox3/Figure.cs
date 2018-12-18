@@ -32,7 +32,7 @@ namespace xox3
             {
                 Pen p = new Pen(Color.Red, 10); //поработать над шириной пера
                 gPanel.DrawLine(p, k * x + 5, l * y + 5, k * x + k-5, l * y + l-5);
-                gPanel.DrawLine(p, k * x + l-5, l * y + 5, k * x + 5, l * y + l-5);
+                gPanel.DrawLine(p, k * x + k-5, l * y + 5, k * x + 5, l * y + l-5);
             }
             else
             {

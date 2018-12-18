@@ -20,6 +20,7 @@ namespace xox3
         static public bool firstStep = true;
         static public bool Step;
         static public CreatePole gamePole = new CreatePole();
+        static public CompPlayercs compPlayer = new CompPlayercs();
 
         static public void ClickPole(object sender, MouseEventArgs e)
         {
@@ -36,11 +37,15 @@ namespace xox3
                     pole[x, y] = new Figure(EnumOX.X, x, y);
                     pole[x, y].DrawFigure((Panel)sender, poleWidth, poleHeight);
                     Step = !Step;
+                    compPlayer.Hod(pole, Step, difficultyO, (Panel)sender, poleWidth, poleHeight);
+                    Step = !Step;
                 }
                 else if(playerO == EnumPlayerComp.PLAYER && Step == true)
                 {
                     pole[x, y] = new Figure(EnumOX.O, x, y);
                     pole[x, y].DrawFigure((Panel)sender, poleWidth, poleHeight);
+                    Step = !Step;
+                    compPlayer.Hod(pole, Step, difficultyX, (Panel)sender, poleWidth, poleHeight);
                     Step = !Step;
                 }
             }
@@ -52,7 +57,7 @@ namespace xox3
             gamePole.Create(panel1, poleWidth, poleHeight); //перерисовка игрового поля
 
             Array.Clear(pole, 0, pole.Length); //очистка игрового массива
-            firstStep = !firstStep;
+            //firstStep = !firstStep;
             Step = firstStep;
             
 
