@@ -10,6 +10,7 @@ namespace xox3
 {
     static class Xox
     {
+        static public int timertic = 0;
         static public int poleWidth = 9; //Ширина игрового поля
         static public int poleHeight = 9; //Длина игрового поля
         static public Figure[,] pole = new Figure[poleWidth, poleHeight];
@@ -20,9 +21,10 @@ namespace xox3
         static public bool firstStep = true;
         static public bool Step;
         static public CreatePole gamePole = new CreatePole();
-        static public CompPlayercs compPlayer = new CompPlayercs();
+       // static public CompPlayercs compPlayer = new CompPlayercs();
 
-        static public void ClickPole(object sender, MouseEventArgs e)
+
+        static public void ClickPole(object sender, MouseEventArgs e) 
         {
             // Определяем координаты щелчка игрока
             Panel p1 = (Panel)sender;
@@ -37,16 +39,79 @@ namespace xox3
                     pole[x, y] = new Figure(EnumOX.X, x, y);
                     pole[x, y].DrawFigure((Panel)sender, poleWidth, poleHeight);
                     Step = !Step;
-                    compPlayer.Hod(pole, Step, difficultyO, (Panel)sender, poleWidth, poleHeight);
-                    Step = !Step;
                 }
                 else if(playerO == EnumPlayerComp.PLAYER && Step == true)
                 {
                     pole[x, y] = new Figure(EnumOX.O, x, y);
                     pole[x, y].DrawFigure((Panel)sender, poleWidth, poleHeight);
                     Step = !Step;
-                    compPlayer.Hod(pole, Step, difficultyX, (Panel)sender, poleWidth, poleHeight);
+                }
+            }
+        }
+
+
+
+        //Цикл игры
+        static public void CompHod(Panel panel1)
+        {
+            //Создание объекта для генерации чисел
+            Random rnd = new Random();
+            int value = rnd.Next(10);
+
+            if (playerX == EnumPlayerComp.COMP && Step == false)
+            {
+                if (value < difficultyX)
+
+                {
+                    bool flag = true;
+
+                    while (flag)
+                    {
+                        int x = rnd.Next(poleWidth);
+                        int y = rnd.Next(poleHeight);
+
+                        if (pole[x, y] == null)
+                        {
+                            pole[x, y] = new Figure(EnumOX.X, x, y);
+                            pole[x, y].DrawFigure(panel1, poleWidth, poleHeight);
+                            flag = false;
+                        }
+                    }
+
                     Step = !Step;
+
+                }
+                else
+                {
+                    //просчёт хода
+                }
+            }
+            if (playerO == EnumPlayerComp.COMP && Step == true)
+            {
+                if (value < difficultyO)
+
+                {
+                    bool flag = true;
+
+                    while (flag)
+                    {
+                        int x = rnd.Next(poleWidth);
+                        int y = rnd.Next(poleHeight);
+
+                        if (pole[x, y] == null)
+                        {
+                            pole[x, y] = new Figure(EnumOX.O, x, y);
+                            pole[x, y].DrawFigure(panel1, poleWidth, poleHeight);
+                            flag = false;
+                        }
+                    }
+
+                    Step = !Step;
+
+                }
+                else
+                {
+                    // Просчёт хода
                 }
             }
         }
@@ -59,17 +124,8 @@ namespace xox3
             Array.Clear(pole, 0, pole.Length); //очистка игрового массива
             //firstStep = !firstStep;
             Step = firstStep;
-            
 
-        }
 
-        //Цикл игры
-        static public void CircleGame()
-        {
-            while (true)
-            {
-
-            }
         }
     }
 }

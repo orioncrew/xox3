@@ -38,5 +38,12 @@ namespace xox3
         {
             this.Close();
         }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            lbTimer.Text = Xox.timertic.ToString();
+            Xox.timertic++;
+            Xox.CompHod(panel1);
+        }
     }
 }
