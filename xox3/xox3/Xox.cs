@@ -13,6 +13,7 @@ namespace xox3
         static public int timertic = 0;
         static public int poleWidth = 9; //Ширина игрового поля
         static public int poleHeight = 9; //Длина игрового поля
+        static public int chain = 5; //Длина цепочки в ряд
         static public Figure[,] pole = new Figure[poleWidth, poleHeight];
         static public EnumPlayerComp playerX = EnumPlayerComp.PLAYER;
         static public EnumPlayerComp playerO = EnumPlayerComp.PLAYER;
@@ -126,6 +127,22 @@ namespace xox3
             Step = firstStep;
 
 
+        }
+
+        //Проверка на выигрыш
+        static public EnumOX TestWin()
+        {
+            //Проверка
+            for (int i = 0; i < poleWidth; i++)
+            {
+                for (int j = 0; j < poleHeight; j++)
+                {
+                    //перебор звездой
+
+                }
+            }
+
+            return EnumOX.space;
         }
     }
 }

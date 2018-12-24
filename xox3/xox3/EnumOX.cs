@@ -10,6 +10,7 @@ namespace xox3
     {
         X,
         O,
-        space
+        space,
+        noOne
     }
 }
