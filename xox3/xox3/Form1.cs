@@ -13,7 +13,7 @@ namespace xox3
     public partial class fMain : Form
     {
         fOpt fO = new fOpt();
-        fGame fG = new fGame();
+        public fGame fG = new fGame();
 
         public fMain()
         {

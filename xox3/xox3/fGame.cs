@@ -41,12 +41,12 @@ namespace xox3
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            lbTimer.Text = Xox.timertic.ToString();
-            Xox.timertic++;
-            Xox.CompHod(panel1);
+            //lbTimer.Text = Xox.timertic.ToString();
+            //Xox.timertic++;
+            //Xox.CompHod(panel1);
 
 
-            EnumOX testWin = (Xox.TestWin());
+            EnumOX testWin = (Xox.TestWin(lbTimer));
             if (testWin == EnumOX.X)
             {
                 //Победил игрок Х
@@ -59,11 +59,11 @@ namespace xox3
             {
                 //Ничья
             }
+        }
 
-
-
-
-
+        public void lbTime(string e)
+        {
+            lbTimer.Text = e;
         }
     }
 }

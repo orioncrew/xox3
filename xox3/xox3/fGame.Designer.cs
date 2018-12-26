@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fGame));
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lbTimer = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.lbscrO = new System.Windows.Forms.Label();
             this.lbscrX = new System.Windows.Forms.Label();
@@ -41,7 +42,6 @@
             this.btnRestart = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.lbTimer = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -69,6 +69,15 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Табло";
+            // 
+            // lbTimer
+            // 
+            this.lbTimer.AutoSize = true;
+            this.lbTimer.Location = new System.Drawing.Point(20, 270);
+            this.lbTimer.Name = "lbTimer";
+            this.lbTimer.Size = new System.Drawing.Size(46, 17);
+            this.lbTimer.TabIndex = 4;
+            this.lbTimer.Text = "label3";
             // 
             // groupBox3
             // 
@@ -162,15 +171,6 @@
             // 
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // lbTimer
-            // 
-            this.lbTimer.AutoSize = true;
-            this.lbTimer.Location = new System.Drawing.Point(20, 270);
-            this.lbTimer.Name = "lbTimer";
-            this.lbTimer.Size = new System.Drawing.Size(46, 17);
-            this.lbTimer.TabIndex = 4;
-            this.lbTimer.Text = "label3";
             // 
             // fGame
             // 

@@ -129,20 +129,81 @@ namespace xox3
 
         }
 
-        //Проверка на выигрыш
-        static public EnumOX TestWin()
+        static public EnumOX TestWin(Label lbTimer)
         {
-            //Проверка
-            for (int i = 0; i < poleWidth; i++)
+            WorkTestWin(1, 0, chain, poleWidth, poleHeight, pole, lbTimer);
+            WorkTestWin(0, 1, chain, poleWidth, poleHeight, pole, lbTimer);
+            WorkTestWin(1, 1, chain, poleWidth, poleHeight, pole, lbTimer);
+            WorkTestWin(-1, 1, chain, poleWidth, poleHeight, pole, lbTimer);
+            return EnumOX.X;
+        }
+
+        //Проверка на выигрыш
+        static public EnumOX WorkTestWin(int dx, int dy, int chain, int poleWidth, int poleHeight, Figure[,] pole, Label lbTimer)//проверка на выигрыш
+        {
+            int x = poleWidth; //Ширина игрового поля
+            int y = poleHeight;//Высота игрового поля
+            int z = chain;//длина цепочки
+            int weight = 0, di = 0;
+            bool s1, s2;
+
+            if (dx == -1)
             {
-                for (int j = 0; j < poleHeight; j++)
+                di = z - 1;//для обратной диагонали
+
+
+            }
+            for (int i = di; i < x - z * dx * dx + 1 * dx * dx + di; i++) //перебираем по координате X
+            {
+
+
+                for (int j = 0; j < y - z * dy + 1 * dy; j++)//перебираем по координате Y
                 {
-                    //перебор звездой
+                    s1 = false; s2 = false; weight = 0;
+                    for (int k = 0; k < z; k++)
+                    {
+                        if(pole[i + dx * k, j + dy * k].value == EnumOX.X)
+                        {
+                            s1 = true;
+                            weight++;
+
+                        }
+                        else if (pole[i + dx * k, j + dy * k].value == EnumOX.O)
+                        {
+                            s2 = true;
+                            weight++;
+
+                        }
+
+                        //Debug.Log("i=" + (i + dx * k) + " j=" + (j + dy * k));
+                        //switch (pole[i + dx * k, j + dy * k, 0])
+                        //{
+
+                        //    case 1:
+                        //        s1 = true;
+                        //        weight++;
+
+                        //        break;
+                        //    case 2:
+                        //        s2 = true;
+                        //        weight++;
+
+                        //        break;
+                        //}
+
+                    }
+
+                    if (s1 != s2 && weight == z)
+                    {
+                        //рисуем победную линию
+                        //Instantiate(win, new Vector3(i + dx * k - x / 2, j + dy * k - y / 2, -1), Quaternion.identity);
+                        lbTimer.Text = "Победа Х";
+                    }
+
 
                 }
             }
-
-            return EnumOX.space;
+            return (0);
         }
     }
 }
