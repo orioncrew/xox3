@@ -131,11 +131,16 @@ namespace xox3
 
         static public EnumOX TestWin(Label lbTimer)
         {
-            WorkTestWin(1, 0, chain, poleWidth, poleHeight, pole, lbTimer);
-            WorkTestWin(0, 1, chain, poleWidth, poleHeight, pole, lbTimer);
-            WorkTestWin(1, 1, chain, poleWidth, poleHeight, pole, lbTimer);
-            WorkTestWin(-1, 1, chain, poleWidth, poleHeight, pole, lbTimer);
-            return EnumOX.X;
+            EnumOX temp;
+            temp = WorkTestWin(1, 0, chain, poleWidth, poleHeight, pole, lbTimer);
+            if (temp != EnumOX.noOne) return temp;
+            temp = WorkTestWin(0, 1, chain, poleWidth, poleHeight, pole, lbTimer);
+            if (temp != EnumOX.noOne) return temp;
+            temp = WorkTestWin(1, 1, chain, poleWidth, poleHeight, pole, lbTimer);
+            if (temp != EnumOX.noOne) return temp;
+            temp = WorkTestWin(-1, 1, chain, poleWidth, poleHeight, pole, lbTimer);
+            if (temp != EnumOX.noOne) return temp;
+            return EnumOX.noOne;
         }
 
         //Проверка на выигрыш
@@ -162,34 +167,22 @@ namespace xox3
                     s1 = false; s2 = false; weight = 0;
                     for (int k = 0; k < z; k++)
                     {
-                        if(pole[i + dx * k, j + dy * k].value == EnumOX.X)
-                        {
-                            s1 = true;
-                            weight++;
+                        Figure temp = pole[i + dx * k, j + dy * k];
+                        if (temp != null)
+                            if (temp.value == EnumOX.X)
+                            {
+                                s1 = true;
+                                weight++;
 
-                        }
-                        else if (pole[i + dx * k, j + dy * k].value == EnumOX.O)
-                        {
-                            s2 = true;
-                            weight++;
+                            }
+                            else if (temp.value == EnumOX.O)
+                            {
+                                s2 = true;
+                                weight++;
 
-                        }
+                            }
 
-                        //Debug.Log("i=" + (i + dx * k) + " j=" + (j + dy * k));
-                        //switch (pole[i + dx * k, j + dy * k, 0])
-                        //{
 
-                        //    case 1:
-                        //        s1 = true;
-                        //        weight++;
-
-                        //        break;
-                        //    case 2:
-                        //        s2 = true;
-                        //        weight++;
-
-                        //        break;
-                        //}
 
                     }
 
@@ -197,13 +190,23 @@ namespace xox3
                     {
                         //рисуем победную линию
                         //Instantiate(win, new Vector3(i + dx * k - x / 2, j + dy * k - y / 2, -1), Quaternion.identity);
-                        lbTimer.Text = "Победа Х";
+                        
+                        if (s1)
+                        {
+                            
+                            return EnumOX.X;
+                        }
+                        else
+                        {
+                            
+                            return EnumOX.O;
+                        }
                     }
 
 
                 }
             }
-            return (0);
+            return (EnumOX.noOne);
         }
     }
 }

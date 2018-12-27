@@ -50,10 +50,12 @@ namespace xox3
             if (testWin == EnumOX.X)
             {
                 //Победил игрок Х
+                lbTimer.Text = "Победа Х";
             }
             else if (testWin == EnumOX.O)
             {
                 //Победил игрок О
+                lbTimer.Text = "Победа O";
             }
             else if (testWin == EnumOX.noOne)
             {
