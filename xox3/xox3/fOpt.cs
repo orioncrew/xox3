@@ -24,7 +24,7 @@ namespace xox3
 
         private void btOptClose_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
             
         }
 
