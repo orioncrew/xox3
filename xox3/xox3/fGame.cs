@@ -43,7 +43,7 @@ namespace xox3
         {
             //lbTimer.Text = Xox.timertic.ToString();
             //Xox.timertic++;
-            //Xox.CompHod(panel1);
+            Xox.CompHod(panel1);
 
 
             EnumOX testWin = (Xox.TestWin(lbTimer));
@@ -60,6 +60,7 @@ namespace xox3
             else if (testWin == EnumOX.noOne)
             {
                 //Ничья
+                lbTimer.Text = "Ничья";
             }
         }
 

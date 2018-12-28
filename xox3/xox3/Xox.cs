@@ -85,6 +85,7 @@ namespace xox3
                 else
                 {
                     //просчёт хода
+                    ClickAI();
                 }
             }
             if (playerO == EnumPlayerComp.COMP && Step == true)
@@ -113,6 +114,7 @@ namespace xox3
                 else
                 {
                     // Просчёт хода
+                    ClickAI();
                 }
             }
         }
@@ -133,14 +135,14 @@ namespace xox3
         {
             EnumOX temp;
             temp = WorkTestWin(1, 0, chain, poleWidth, poleHeight, pole, lbTimer);
-            if (temp != EnumOX.noOne) return temp;
+            if (temp != EnumOX.space) return temp;
             temp = WorkTestWin(0, 1, chain, poleWidth, poleHeight, pole, lbTimer);
-            if (temp != EnumOX.noOne) return temp;
+            if (temp != EnumOX.space) return temp;
             temp = WorkTestWin(1, 1, chain, poleWidth, poleHeight, pole, lbTimer);
-            if (temp != EnumOX.noOne) return temp;
+            if (temp != EnumOX.space) return temp;
             temp = WorkTestWin(-1, 1, chain, poleWidth, poleHeight, pole, lbTimer);
-            if (temp != EnumOX.noOne) return temp;
-            return EnumOX.noOne;
+            if (temp != EnumOX.space) return temp;
+            return EnumOX.space;
         }
 
         //Проверка на выигрыш
@@ -206,7 +208,218 @@ namespace xox3
 
                 }
             }
-            return (EnumOX.noOne);
+            return (EnumOX.space);
+        }
+
+        ////////////////////////////
+
+        static void ClickAI()
+        {
+
+            int[,] poleObscheta = new int[poleWidth, poleHeight];//обнуляем все ячейки расчётного поля
+
+
+            // Вызов процедур определения веса групп
+            WeightGroupOnPole(1, 0, poleObscheta);//Горизонтальные группы слева направо
+            WeightGroupOnPole(0, 1, poleObscheta);//Вертикальные группы снизу вверх
+            WeightGroupOnPole(1, 1, poleObscheta);//Диагональные группы снизу слева направо вверх
+            WeightGroupOnPole(-1, 1, poleObscheta);//Диагональные обратные группы снизу справа налево вверх
+
+
+
+            WeightCell(poleObscheta);//Определение самой тяжелой ячейки
+
+
+
+            //if (pl1 == 1 || pl2 == 1) time = Time.time + 0.3f;
+        }
+
+        static void WeightGroupOnPole(int dx, int dy, int[,] poleObscheta) // подсчитываем веса всех групп
+        {
+            //Определяем веса групп
+            int weight = 0, di = 0;
+            bool s1, s2;
+            int difficulty;
+            if (Step) difficulty = difficultyX; else difficulty = difficultyO;
+
+            if (dx == -1)
+            {
+                di = chain - 1;//для обратной диагонали
+
+
+            }
+
+
+
+
+            for (int i = di; i < poleWidth - chain * dx * dx + 1 * dx * dx + di; i++) //перебираем по координате X
+            {
+
+
+                for (int j = 0; j < poleHeight - chain * dy + 1 * dy; j++)//перебираем по координате Y
+                {
+
+                    //Destroy(cub[i, j]);//уничтожаем пустую ячейку на экране
+                    // cub[i, j] = Instantiate(p3, new Vector3(i - x / 2, j - y / 2, 0), Quaternion.identity); //создаём фишку противника
+                    //cub[i, j].name = "player_" + i + "_" + j;//Даём фишке название
+                    //cub[i, j].transform.parent = transform;
+                    //enable = true;//Переключаем на ход игрока
+                    // Debug.Log("i=" + i + ", j=" + j);
+
+
+
+
+                    s1 = false; s2 = false; int bonus = 1;
+                    //перебираем ячейки группы
+                    for (int k = 0; k < chain; k++)
+                    {
+
+                        //Debug.Log("i=" + (i + dx * k) + " j=" + (j + dy * k));
+                        switch (poleObscheta[i + dx * k, j + dy * k])
+                        {
+
+                            case 1:
+                                s1 = true;
+                                weight += bonus;
+                                bonus *= (difficulty * bonus);
+
+                                break;
+                            case 2:
+                                s2 = true;
+                                weight += bonus;
+                                bonus *= (difficulty * bonus);
+
+                                break;
+                        }
+
+                    }
+
+
+
+                    if (s1 != s2)
+                    {
+
+
+                        // if (hod && s1 == true)
+                        //  {
+                        //      if (weight == z - 1) weight += 100;
+                        // weight++;
+                        //   }
+                        //   if (!hod && s2 == true)
+                        //  {
+                        //      if (weight == z - 1) weight += 100;
+                        //weight++;
+                        //   };
+                        //если ячейки наши, повышаем вес
+
+                        //Запись весов в ячейки расчётов
+
+                        //перебираем ячейки группы
+                        for (int k = 0; k < chain; k++)
+                        {
+                            if (pole[i + dx * k, j + dy * k] == null)
+                            {
+                                poleObscheta[i + dx * k, j + dy * k] += weight;
+                            }
+                            else poleObscheta[i + dx * k, j + dy * k] = 0;
+
+                        }
+
+                        weight = 0;
+
+                    }
+
+                    weight = 0;
+                }
+                weight = 0;
+            }
+        }
+
+        static void WeightCell(int[,] poleObscheta)
+        {
+            // Определяем самую тяжелую ячейку
+            bool shod = false; //был ли ход
+            //GameObject pg;
+            int tmp;
+            if (Step)
+            {
+                //pg = pg1;
+                tmp = 1;
+            }
+
+            else
+            {
+                //pg = pg2;
+                tmp = 2;
+            }
+
+            Random rnd = new Random();
+
+
+            int weight = 0;
+            int tmpx = rnd.Next(poleWidth);
+            int tmpy = rnd.Next(poleHeight);
+
+
+            poleObscheta[tmpx, tmpy] = 1;
+            // string s = "";
+
+            //обнуляем расчётные занятые ячейки
+            for (int i = 0; i < poleWidth; i++)
+            {
+                for (int j = 0; j < poleHeight; j++)
+                {
+
+                    if (pole[i, j] != null) poleObscheta[i, j] = 0;//обнуляем все занятые ячейки расчётного поля
+
+
+                }
+            }
+
+            //выбираем самую тяжелую
+            for (int j = poleHeight - 1; j >= 0; j--)
+            {
+                for (int i = 0; i < poleWidth; i++)
+                {
+                    if (poleObscheta[i, j] > weight)
+                    {
+                        weight = poleObscheta[i, j];
+                        tmpx = i;
+                        tmpy = j;
+                        shod = true;
+
+                    }
+                    // s += ("!" + pole[i, j, 1] + "!");
+                }
+                // Debug.Log("i=" + j + "! " +s);
+                // s = "";
+            }
+
+
+            //  (byte)Random.Range(0.0f, x);
+            //  (byte)Random.Range(0.0f, y);
+
+            if (shod)//проверка был ли ход
+            {
+                pole[tmpx, tmpy] = new Figure(EnumOX.X, tmpx, tmpy); ;//заносим в массив ход
+                //if (show)
+                //{
+                //    Destroy(cub[tmpx, tmpy]);//уничтожаем колайдер в клетке
+                //    cub[tmpx, tmpy] = Instantiate(pg, new Vector3(tmpx - x / 2, tmpy - y / 2, -2), Quaternion.identity); //создаём фишку противника
+                //    cub[tmpx, tmpy].name = "player_" + tmpx + "_" + tmpy;//Даём фишке название
+                //    cub[tmpx, tmpy].transform.parent = transform;
+                //}
+
+                // Debug.Log("Противник " + tmpx + " " + tmpy);
+            }
+            else
+            {
+                //Debug.Log("Ходы закончились");
+                //enable = false;
+            }
+            if (Step) Step = false; else Step = true;//Переключаем ход
+                                                  //проверка на выигрыш
+
         }
     }
 }
