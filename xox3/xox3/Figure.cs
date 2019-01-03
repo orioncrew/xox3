@@ -23,21 +23,21 @@ namespace xox3
 
         public void DrawFigure(Panel panel1, int poleWidth, int poleHeight)
         {
-            int k = panel1.Width / poleWidth;
-            int l = panel1.Height / poleHeight;
+            double k = (double)panel1.Width / (double)poleWidth;
+            double l = (double)panel1.Height / (double)poleHeight;
             //отрисовка знака
             Graphics gPanel = panel1.CreateGraphics();
             
             if(value == EnumOX.X)
             {
                 Pen p = new Pen(Color.Red, 10); //поработать над шириной пера
-                gPanel.DrawLine(p, k * x + 5, l * y + 5, k * x + k-5, l * y + l-5);
-                gPanel.DrawLine(p, k * x + k-5, l * y + 5, k * x + 5, l * y + l-5);
+                gPanel.DrawLine(p, (int)(k * x + 5), (int)(l * y + 5), (int)(k * x + k-5), (int)(l * y + l-5));
+                gPanel.DrawLine(p, (int)(k * x + k-5), (int)(l * y + 5), (int)(k * x + 5), (int)(l * y + l-5));
             }
             else
             {
                 Pen p = new Pen(Color.Green, 10); //поработать над шириной пера
-                gPanel.DrawEllipse(p, k * x + 10, l * y + 10, k-20, l-20);
+                gPanel.DrawEllipse(p, (int)(k * x + 10), (int)(l * y + 10), (int)(k -20), (int)(l -20));
             }          
 
 

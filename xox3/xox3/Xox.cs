@@ -29,8 +29,8 @@ namespace xox3
         {
             // Определяем координаты щелчка игрока
             Panel p1 = (Panel)sender;
-            int x = e.Location.X / (p1.Width/ poleWidth);
-            int y = e.Location.Y / (p1.Width / poleHeight);
+            int x = (int)((double)e.Location.X / ((double)p1.Width/ (double)poleWidth));
+            int y = (int)((double)e.Location.Y / ((double)p1.Width / (double)poleHeight));
 
             // Рисуем фигуру по координатам x и y
             if (pole[x, y] == null)

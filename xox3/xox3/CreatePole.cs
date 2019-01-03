@@ -12,8 +12,8 @@ namespace xox3
     {
         public void Create(Panel panel1, int x, int y)
         {
-            int k = panel1.Width/x;
-            int l = panel1.Height/y;
+            double k = (double)panel1.Width/(double)x;
+            double l = (double)panel1.Height/ (double)y;
             Graphics gPanel = panel1.CreateGraphics();
             Pen p = new Pen(Color.Blue, 1);
             Pen p1 = new Pen(Color.Blue, 2);
@@ -31,12 +31,12 @@ namespace xox3
             gPanel.DrawLine(p1, new Point(0, 300), new Point(450, 300));*/
             for (int i = 0; i < x; i++) //Вертикальные линии
             {
-                gPanel.DrawLine(p1, new Point(panel1.Width - i * k, 0), new Point(panel1.Width - i * k, panel1.Height));
+                gPanel.DrawLine(p1, new Point((int)(panel1.Width - i * k), 0), new Point((int)(panel1.Width - i * k), panel1.Height));
             }
 
             for (int i = 0; i < y; i++)//Горизонтальные линии
             {
-                gPanel.DrawLine(p1, new Point(0, panel1.Height - i * l), new Point(panel1.Width, panel1.Height - i * l));
+                gPanel.DrawLine(p1, new Point(0, (int)(panel1.Height - i * l)), new Point(panel1.Width, (int)(panel1.Height - i * l)));
             }
         }
     }
