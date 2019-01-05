@@ -15,8 +15,9 @@ namespace xox3
         public fGame()
         {
             InitializeComponent();
+            Player playerX = new Player(EnumOX.X, panel1);
+            Player playerO = new Player(EnumOX.O, panel1);
 
-            
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -46,7 +47,7 @@ namespace xox3
             Xox.CompHod(panel1);
 
 
-            EnumOX testWin = (Xox.TestWin(lbTimer));
+            EnumOX testWin = Xox.TestWin(lbTimer);
             if (testWin == EnumOX.X)
             {
                 //Победил игрок Х

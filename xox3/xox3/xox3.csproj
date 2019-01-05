@@ -45,7 +45,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CompPlayercs.cs" />
     <Compile Include="CreatePole.cs" />
     <Compile Include="EnumOX.cs" />
     <Compile Include="EnumPlayerComp.cs" />
@@ -68,6 +67,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Xox.cs" />
